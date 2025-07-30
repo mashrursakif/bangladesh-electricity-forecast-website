@@ -1,5 +1,6 @@
 import { forecastData } from '../../public/data';
 import ForecastSection from './components/ForecastSection';
+import HistoricalSection from './components/HistoricalSection';
 import TodaySection from './components/TodaySection';
 
 export default function Home() {
@@ -21,10 +22,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='flex flex-col items-center p-8'>
+      <div className='flex flex-col items-center p-8 pb-32'>
         <TodaySection data={todayData} />
 
         <ForecastSection />
+
+        <HistoricalSection />
       </div>
     </div>
   );

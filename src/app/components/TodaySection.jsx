@@ -26,8 +26,12 @@ export default function TodaySection({ data }) {
   }
 
   return (
-    <div className='w-[800px] max-w-[800px]'>
-      <h2 className='text-teal-900 text-4xl font-bold'>Today</h2>
+    <div className='w-[800px] max-w-[800px] mt-8'>
+      <h2 className='text-teal-900 text-4xl font-semibold'>Today's Forecast</h2>
+
+      <p className='text-lg text-gray-800 mt-2'>
+        Predicted electricity generation and loadshed for today
+      </p>
 
       <div className='flex gap-6 mt-6'>
         <div className='p-4 bg-gray-100 rounded w-[240px] shadow-md'>

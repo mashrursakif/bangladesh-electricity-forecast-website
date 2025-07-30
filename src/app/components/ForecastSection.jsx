@@ -13,8 +13,12 @@ import {
 
 export default function ForecastSection() {
   return (
-    <div className='w-[800px] max-w-[800px] mt-12'>
-      <h2 className='text-teal-900 text-4xl font-bold'>5 Day Forecast</h2>
+    <div className='w-[800px] max-w-[800px] mt-20'>
+      <h2 className='text-teal-900 text-4xl font-semibold'>5 Day Forecast</h2>
+
+      <p className='text-lg text-gray-800 mt-2'>
+        Projected generation and loadshed for upcoming days
+      </p>
 
       <div className='mt-8'>
         <LineChart width={800} height={400} data={forecastData}>
