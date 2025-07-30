@@ -19,7 +19,8 @@ export default function HistoricalSection() {
 
   const handleChange = (e) => {
     const range = parseInt(e.target.value);
-    setDisplayData(data.slice(-range));
+    const rangedData = range == -1 ? data : data.slice(-range);
+    setDisplayData(rangedData);
   };
 
   return (
