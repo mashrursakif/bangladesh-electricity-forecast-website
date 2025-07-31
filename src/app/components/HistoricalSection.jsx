@@ -29,7 +29,7 @@ export default function HistoricalSection() {
         Historical Performance
       </h2>
 
-      <p className='text-lg text-gray-800 mt-2'>
+      <p className='text-lg text-gray-900 mt-2'>
         Compare accuracy of the model with real-world data from{' '}
         <Link
           className='text-blue-900 font-semibold underline'

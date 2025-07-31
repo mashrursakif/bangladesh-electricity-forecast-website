@@ -1,6 +1,8 @@
 import { forecastData } from '../../public/data';
+import About from './components/About';
 import ForecastSection from './components/ForecastSection';
 import HistoricalSection from './components/HistoricalSection';
+import MethodologySection from './components/MethodologySection';
 import TodaySection from './components/TodaySection';
 
 export default function Home() {
@@ -28,6 +30,10 @@ export default function Home() {
         <ForecastSection />
 
         <HistoricalSection />
+
+        <MethodologySection />
+
+        <About />
       </div>
     </div>
   );

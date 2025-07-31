@@ -41,6 +41,10 @@ export default function ForecastSection() {
           <Tooltip />
         </LineChart>
       </div>
+
+      <p className='mt-6 '>
+        The forecasts are updated daily at 2 A.M. GMT (UTC+0)
+      </p>
     </div>
   );
 }
