@@ -31,7 +31,16 @@ export default function ForecastSection({ forecastData }) {
 						<ResponsiveContainer width='95%' height={320}>
 							<BarChart data={forecastData}>
 								<CartesianGrid />
-								<XAxis dataKey='date' />
+								<XAxis
+									dataKey='date'
+									tickFormatter={(dateStr) => {
+										const weekday = new Date(dateStr).toLocaleDateString(
+											'en-US',
+											{ weekday: 'short' }
+										);
+										return weekday;
+									}}
+								/>
 								<YAxis padding={{ top: 40 }} />
 								<Tooltip />
 								<Bar
@@ -51,7 +60,16 @@ export default function ForecastSection({ forecastData }) {
 						<ResponsiveContainer width='95%' height={320}>
 							<BarChart data={forecastData}>
 								<CartesianGrid />
-								<XAxis dataKey='date' />
+								<XAxis
+									dataKey='date'
+									tickFormatter={(dateStr) => {
+										const weekday = new Date(dateStr).toLocaleDateString(
+											'en-US',
+											{ weekday: 'short' }
+										);
+										return weekday;
+									}}
+								/>
 								<YAxis />
 								<Tooltip />
 								<Bar
