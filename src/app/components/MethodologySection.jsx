@@ -41,7 +41,7 @@ export default function MethodologySection() {
 				<ul className='list-disc list-inside'>
 					<li>
 						<Link
-							href='/'
+							href='https://erp.pgcb.gov.bd/w/generations/view_generations?page=1'
 							className='text-blue-900 text-lg underline'
 							target='_blank'
 							rel='noopener noreferrer'
