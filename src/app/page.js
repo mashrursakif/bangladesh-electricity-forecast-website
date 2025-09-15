@@ -1,40 +1,51 @@
-import { forecastData } from '../../public/data';
 import About from './components/About';
 import ForecastSection from './components/ForecastSection';
 import HistoricalSection from './components/HistoricalSection';
 import MethodologySection from './components/MethodologySection';
 import TodaySection from './components/TodaySection';
 
-export default function Home() {
-  const todayData = forecastData[0];
+export default async function Home() {
+	// const todayData = forecastData[0];
 
-  return (
-    <div>
-      <div className='bg-gradient flex justify-center items-center min-h-[400px]'>
-        <div className='max-w-[600px]'>
-          <h1 className='text-white text-5xl font-semibold'>
-            Bangladesh Electricity Generation and Loadshed Forecast
-          </h1>
+	const getPredictions = await fetch(
+		'https://raw.githubusercontent.com/mashrursakif/bangladesh-electricity-forecast-pipeline/main/predictions.json',
+		{ cache: 'no-store' }
+	);
 
-          <p className='text-gray-100 text-xl mt-4'>
-            Using a machine learning model trained on Bangladesh&apos;s
-            electricity and weather data to forecast power generation and
-            predict loadshed
-          </p>
-        </div>
-      </div>
+	const predictions = await getPredictions.json();
 
-      <div className='flex flex-col items-center p-8 pb-32'>
-        <TodaySection data={todayData} />
+	const forecast = predictions['forecast'];
+	const history = predictions['history'];
+	const todayData = forecast[0];
+	console.log(history);
 
-        <ForecastSection />
+	return (
+		<div>
+			<div className='bg-gradient flex justify-center items-center min-h-[400px]'>
+				<div className='max-w-[600px]'>
+					<h1 className='text-white text-5xl font-semibold'>
+						Bangladesh Electricity Generation and Loadshed Forecast
+					</h1>
 
-        <HistoricalSection />
+					<p className='text-gray-100 text-xl mt-4'>
+						Using a machine learning model trained on Bangladesh&apos;s
+						electricity and weather data to forecast power generation and
+						predict loadshed
+					</p>
+				</div>
+			</div>
 
-        <MethodologySection />
+			<div className='flex flex-col items-center p-8 pb-32'>
+				<TodaySection data={todayData} />
 
-        <About />
-      </div>
-    </div>
-  );
+				<ForecastSection forecastData={forecast} />
+
+				<HistoricalSection historyData={history} />
+
+				<MethodologySection />
+
+				<About />
+			</div>
+		</div>
+	);
 }

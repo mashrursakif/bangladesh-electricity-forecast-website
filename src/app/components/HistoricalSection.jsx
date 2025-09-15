@@ -1,100 +1,123 @@
 'use client';
 
 import Link from 'next/link';
-import { data } from '../../../public/data';
 import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
+	LineChart,
+	Line,
+	CartesianGrid,
+	XAxis,
+	YAxis,
+	Tooltip,
+	Legend,
 } from 'recharts';
 import { useState } from 'react';
 import RangeDropdown from './RangeDropdown';
 
-export default function HistoricalSection() {
-  const [displayData, setDisplayData] = useState(data.slice(-30));
+export default function HistoricalSection({ historyData }) {
+	const [displayData, setDisplayData] = useState(historyData.slice(-30));
+	// const [showForecast, setShowForecast] = useState(false);
 
-  const handleChange = (e) => {
-    const range = parseInt(e.target.value);
-    const rangedData = range == -1 ? data : data.slice(-range);
-    setDisplayData(rangedData);
-  };
+	const handleChange = (e) => {
+		const range = parseInt(e.target.value);
+		const rangedData = range == -1 ? historyData : historyData.slice(-range);
+		setDisplayData(rangedData);
+	};
 
-  return (
-    <div className='w-[800px] max-w-[800px] mt-20'>
-      <h2 className='text-teal-900 text-4xl font-semibold'>
-        Historical Performance
-      </h2>
+	// const handleCheck = (e) => {
+	// 	setShowForecastCheck(e.target.checked);
 
-      <p className='text-lg text-gray-900 mt-2'>
-        Compare accuracy of the model with real-world data from{' '}
-        <Link
-          className='text-blue-900 font-semibold underline'
-          href='https://erp.powergrid.gov.bd/w/generations/view_generations'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          PGCB
-        </Link>
-      </p>
+	// 	const fullData = showForecast
+	// 		? [...displayData, ...forecastData]
+	// 		: displayData;
+	// 	setDisplayData(fullData);
+	// };
 
-      <div className='mt-3'>
-        <label className='text-lg'>View data for: </label>
-        <RangeDropdown onChange={handleChange} />
-      </div>
+	return (
+		<div className='w-[800px] max-w-[800px] mt-20'>
+			<h2 className='text-teal-900 text-4xl font-semibold'>
+				Historical Performance
+			</h2>
 
-      <div>
-        <div className='mt-8'>
-          <h3 className='mb-6 text-2xl'>Generation</h3>
+			<p className='text-lg text-gray-900 mt-2'>
+				Compare accuracy of the model with real-world data from{' '}
+				<Link
+					className='text-blue-900 font-semibold underline'
+					href='https://erp.powergrid.gov.bd/w/generations/view_generations'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					PGCB
+				</Link>
+			</p>
 
-          <LineChart width={800} height={400} data={displayData}>
-            <CartesianGrid />
-            <Line
-              stroke='blue'
-              strokeWidth={2}
-              dataKey='generation_prediction'
-              name='Prediction'
-            />
-            <Line
-              stroke='green'
-              strokeWidth={2}
-              dataKey='generation_label'
-              name='Observed'
-            />
-            <XAxis dataKey='date' />
-            <YAxis />
-            <Legend />
-            <Tooltip />
-          </LineChart>
-        </div>
+			<div className='mt-3'>
+				<label className='text-lg'>View data for: </label>
+				<RangeDropdown onChange={handleChange} />
+			</div>
 
-        <div className='mt-8'>
-          <h3 className='mb-6 text-2xl'>Loadshed</h3>
+			{/* <div className='mt-3 flex gap-2 justify-start items-center text-lg'>
+				<input
+					id='forecast-checkbox'
+					type='checkbox'
+					checked={showForecast}
+					onChange={(e) => {
+						setShowForecast(e.target.checked);
+					}}
+					className='accent-teal-700 w-[20px] h-[20px]'
+				/>
+				<label htmlFor='forecast-checkbox'>Show Forecast</label>
+			</div> */}
 
-          <LineChart width={800} height={400} data={displayData}>
-            <CartesianGrid />
-            <Line
-              stroke='red'
-              strokeWidth={2}
-              dataKey='loadshed_prediction'
-              name='Prediction'
-            />
-            <Line
-              stroke='purple'
-              strokeWidth={2}
-              dataKey='loadshed_label'
-              name='Observed'
-            />
-            <XAxis dataKey='date' />
-            <YAxis />
-            <Legend />
-            <Tooltip />
-          </LineChart>
-        </div>
-      </div>
-    </div>
-  );
+			<div>
+				<div className='mt-8'>
+					<h3 className='mb-6 text-2xl'>Generation</h3>
+
+					<LineChart width={800} height={400} data={displayData}>
+						<CartesianGrid />
+						<Line
+							stroke='blue'
+							strokeWidth={2}
+							dataKey='prediction.generation'
+							name='Prediction'
+						/>
+						<Line
+							stroke='green'
+							strokeWidth={2}
+							dataKey='label.generation'
+							name='Observed'
+						/>
+
+						<XAxis dataKey='date' />
+						<YAxis />
+						<Legend />
+						<Tooltip />
+					</LineChart>
+				</div>
+
+				<div className='mt-8'>
+					<h3 className='mb-6 text-2xl'>Loadshed</h3>
+
+					<LineChart width={800} height={400} data={displayData}>
+						<CartesianGrid />
+						<Line
+							stroke='purple'
+							strokeWidth={2}
+							dataKey='prediction.loadshed'
+							name='Prediction'
+						/>
+						<Line
+							stroke='red'
+							strokeWidth={2}
+							dataKey='label.loadshed'
+							name='Observed'
+						/>
+						<XAxis dataKey='date' />
+						<YAxis />
+						<Legend />
+						<Tooltip />
+					</LineChart>
+				</div>
+			</div>
+		</div>
+	);
 }
