@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function MethodologySection() {
 	return (
-		<div className='w-[800px] max-w-[800px] mt-28'>
+		<div className='w-full max-w-[800px] mt-28 px-5'>
 			<h2 className='text-teal-900 text-3xl font-semibold'>Modelling Method</h2>
 
 			<div className='mt-4'>

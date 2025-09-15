@@ -33,29 +33,29 @@ export default function HistoricalSection({ historyData }) {
 	// };
 
 	return (
-		<div className='w-[800px] max-w-[800px] mt-20'>
-			<h2 className='text-teal-900 text-4xl font-semibold'>
-				Historical Performance
-			</h2>
+		<div className='w-full max-w-[800px] mt-20'>
+			<div className='px-5'>
+				<h2 className='text-teal-900 text-4xl font-semibold'>
+					Historical Performance
+				</h2>
 
-			<p className='text-lg text-gray-900 mt-2'>
-				Compare accuracy of the model with real-world data from{' '}
-				<Link
-					className='text-blue-900 font-semibold underline'
-					href='https://erp.powergrid.gov.bd/w/generations/view_generations'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					PGCB
-				</Link>
-			</p>
+				<p className='text-lg text-gray-900 mt-2'>
+					Compare accuracy of the model with real-world data from{' '}
+					<Link
+						className='text-blue-900 font-semibold underline'
+						href='https://erp.powergrid.gov.bd/w/generations/view_generations'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						PGCB
+					</Link>
+				</p>
+				<div className='mt-3'>
+					<label className='text-lg'>View data for: </label>
+					<RangeDropdown onChange={handleChange} />
+				</div>
 
-			<div className='mt-3'>
-				<label className='text-lg'>View data for: </label>
-				<RangeDropdown onChange={handleChange} />
-			</div>
-
-			{/* <div className='mt-3 flex gap-2 justify-start items-center text-lg'>
+				{/* <div className='mt-3 flex gap-2 justify-start items-center text-lg'>
 				<input
 					id='forecast-checkbox'
 					type='checkbox'
@@ -67,55 +67,60 @@ export default function HistoricalSection({ historyData }) {
 				/>
 				<label htmlFor='forecast-checkbox'>Show Forecast</label>
 			</div> */}
+			</div>
 
 			<div>
 				<div className='mt-8'>
-					<h3 className='mb-6 text-2xl'>Generation</h3>
+					<h3 className='mb-6 text-2xl px-6'>Generation</h3>
 
-					<LineChart width={800} height={400} data={displayData}>
-						<CartesianGrid />
-						<Line
-							stroke='blue'
-							strokeWidth={2}
-							dataKey='prediction.generation'
-							name='Prediction'
-						/>
-						<Line
-							stroke='green'
-							strokeWidth={2}
-							dataKey='label.generation'
-							name='Observed'
-						/>
+					<div className='overflow-x-scroll'>
+						<LineChart width={800} height={400} data={displayData}>
+							<CartesianGrid />
+							<Line
+								stroke='blue'
+								strokeWidth={2}
+								dataKey='prediction.generation'
+								name='Prediction'
+							/>
+							<Line
+								stroke='green'
+								strokeWidth={2}
+								dataKey='label.generation'
+								name='Observed'
+							/>
 
-						<XAxis dataKey='date' />
-						<YAxis />
-						<Legend />
-						<Tooltip />
-					</LineChart>
+							<XAxis dataKey='date' />
+							<YAxis />
+							<Legend />
+							<Tooltip />
+						</LineChart>
+					</div>
 				</div>
 
 				<div className='mt-8'>
-					<h3 className='mb-6 text-2xl'>Loadshed</h3>
+					<h3 className='mb-6 text-2xl px-6'>Loadshed</h3>
 
-					<LineChart width={800} height={400} data={displayData}>
-						<CartesianGrid />
-						<Line
-							stroke='purple'
-							strokeWidth={2}
-							dataKey='prediction.loadshed'
-							name='Prediction'
-						/>
-						<Line
-							stroke='red'
-							strokeWidth={2}
-							dataKey='label.loadshed'
-							name='Observed'
-						/>
-						<XAxis dataKey='date' />
-						<YAxis />
-						<Legend />
-						<Tooltip />
-					</LineChart>
+					<div className='overflow-x-scroll'>
+						<LineChart width={800} height={400} data={displayData}>
+							<CartesianGrid />
+							<Line
+								stroke='purple'
+								strokeWidth={2}
+								dataKey='prediction.loadshed'
+								name='Prediction'
+							/>
+							<Line
+								stroke='red'
+								strokeWidth={2}
+								dataKey='label.loadshed'
+								name='Observed'
+							/>
+							<XAxis dataKey='date' />
+							<YAxis />
+							<Legend />
+							<Tooltip />
+						</LineChart>
+					</div>
 				</div>
 			</div>
 		</div>

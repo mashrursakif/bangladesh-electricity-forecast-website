@@ -28,7 +28,7 @@ export default function TodaySection({ data }) {
 	}
 
 	return (
-		<div className='w-[800px] max-w-[800px] mt-8'>
+		<div className='w-full max-w-[800px] mt-8 px-5'>
 			<h2 className='text-teal-900 text-4xl font-semibold'>Today's Forecast</h2>
 
 			<p className='text-lg text-gray-800 mt-2'>

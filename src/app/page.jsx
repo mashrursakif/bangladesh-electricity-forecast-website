@@ -17,13 +17,12 @@ export default async function Home() {
 	const forecast = predictions['forecast'];
 	const history = predictions['history'];
 	const todayData = forecast[0];
-	console.log(history);
 
 	return (
 		<div>
-			<div className='bg-gradient flex justify-center items-center min-h-[400px]'>
+			<div className='bg-gradient flex justify-center items-center min-h-[400px] p-8'>
 				<div className='max-w-[600px]'>
-					<h1 className='text-white text-5xl font-semibold'>
+					<h1 className='text-white text-4xl sm:text-5xl font-semibold'>
 						Bangladesh Electricity Generation and Loadshed Forecast
 					</h1>
 
@@ -35,7 +34,7 @@ export default async function Home() {
 				</div>
 			</div>
 
-			<div className='flex flex-col items-center p-8 pb-32'>
+			<div className='flex flex-col items-center pt-8 pb-32'>
 				<TodaySection data={todayData} />
 
 				<ForecastSection forecastData={forecast} />
