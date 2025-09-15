@@ -84,7 +84,8 @@ export default function ForecastSection({ forecastData }) {
 			</div>
 
 			<p className='mt-6'>
-				The forecasts are updated daily at 2 A.M. GMT (UTC+0)
+				The forecasts are updated daily at 2 A.M. Bangladesh Standard Time
+				(UTC+6)
 			</p>
 		</div>
 	);
