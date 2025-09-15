@@ -18,6 +18,12 @@ Website for displaying daily electricity generation and loadshed forecast in Ban
 - Data gathered from my [GitHub Actions Pipeline](https://github.com/mashrursakif/bangladesh-electricity-forecast-pipeline)
 - Hosted through Vercel
 
+## Assets
+
+- Electricity data from [PGCB](https://erp.pgcb.gov.bd/w/generations/view_generations?page=1)
+- Weather data from [Open Meteo](https://open-meteo.com)
+- Icon design from [Freepik](https://www.freepik.com)
+
 ## Author
 
 Mashrur Sakif Souherdo - [GitHub](https://github.com/mashrursakif)
