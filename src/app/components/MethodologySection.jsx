@@ -78,7 +78,7 @@ export default function MethodologySection() {
 				<p className='text-lg text-gray-800 font-medium'>
 					Full project and model training data can be found on my{' '}
 					<Link
-						href='/'
+						href='https://github.com/mashrursakif'
 						className='text-blue-900 text-lg underline'
 						target='_blank'
 						rel='noopener noreferrer'
